@@ -3,7 +3,7 @@ INSERT INTO Krolestwo (id, Nazwa, Krol, Nastepca) VALUES (1, 'Brarid Empire', 'G
 INSERT INTO Krolestwo (id, Nazwa, Krol, Nastepca) VALUES (2, 'Pribridal Empire',' Ansgot II', 'Alesone I');
 
 INSERT INTO Zamek (id, Nazwa, Zloto, Drewno, Krolestwo_id) VALUES (0, 'Cainfield', 350, 150, 2);
-INSERT INTO Zamek (id, Nazwa, Zloto, Drewno, Krolestwo_id) VALUES (1, 'Cainfield', 100, 400, 1);
+INSERT INTO Zamek (id, Nazwa, Zloto, Drewno, Krolestwo_id) VALUES (1, 'Redcliffe', 100, 400, 1);
 INSERT INTO Zamek (id, Nazwa, Zloto, Drewno, Krolestwo_id) VALUES (2, 'Hartlon', 600, 250, 0);
 INSERT INTO Zamek (id, Nazwa, Zloto, Drewno, Krolestwo_id) VALUES (3, 'Barncowl', 50, 100, 2);
 INSERT INTO Zamek (id, Nazwa, Zloto, Drewno, Krolestwo_id) VALUES (5, 'Pardwell', 600, 150, 0);
@@ -18,8 +18,8 @@ INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (3, 'The Boundless Chasm
 INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (4, 'Shrewbury Grotto', 7);
 INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (5, 'Trenet Subterrane', 6);
 INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (6, 'Chamcoln Overhang', 4);
-INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (7, 'Petromeuse Hideout', NULL);
-INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (8, 'Newingrial Hollow', 4);
+INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (7, 'Petromeuse Hideout', 4);
+INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (8, 'Newingrial Hollow', NULL);
 INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (9, 'The Yelling Hole', 2);
 INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (10, 'The Gargantuan Hollow', 6);
 INSERT INTO Kopalnia_Zlota (id, Nazwa, Zamek_id) VALUES (11, 'Oxmark Hollow', 0);
