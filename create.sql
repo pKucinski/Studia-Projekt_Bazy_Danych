@@ -1,79 +1,78 @@
-CREATE TABLE Krolestwo (
-	id int NOT NULL,
-	Nazwa varchar(255) NOT NULL,
-	Krol varchar(255) NOT NULL,
-	Nastepca varchar(255),
-	CONSTRAINT Krolestwo_pk PRIMARY KEY (id)
-);
+CREATE TABLE krolestwo
+  (
+     id       INT NOT NULL UNIQUE,
+     nazwa    VARCHAR(255) NOT NULL,
+     krol     VARCHAR(255) NOT NULL,
+     nastepca VARCHAR(255),
+     CONSTRAINT krolestwo_pk PRIMARY KEY (id)
+  );
 
-CREATE TABLE Zamek (
-	id int NOT NULL,
-	Nazwa varchar(255) NOT NULL,
-	Zloto int NOT NULL,
-	Drewno int NOT NULL,
-	Krolestwo_id int NOT NULL,
-	CONSTRAINT Zamek_pk PRIMARY KEY (id),
-	FOREIGN KEY (Krolestwo_id) REFERENCES Krolestwo(id) ON DELETE CASCADE
-);
+CREATE TABLE zamek
+  (
+     id           INT NOT NULL UNIQUE,
+     nazwa        VARCHAR(255) NOT NULL,
+     zloto        INT NOT NULL,
+     drewno       INT NOT NULL,
+     krolestwo_id INT NOT NULL,
+     CONSTRAINT zamek_pk PRIMARY KEY (id),
+     FOREIGN KEY (krolestwo_id) REFERENCES krolestwo(id) ON DELETE CASCADE
+  );
 
+CREATE TABLE kopalnia_zlota
+  (
+     id       INT NOT NULL UNIQUE,
+     nazwa    VARCHAR(255) NOT NULL,
+     zamek_id INT,
+     CONSTRAINT kopalnia_zlota_pk PRIMARY KEY (id),
+     FOREIGN KEY (zamek_id) REFERENCES zamek(id) ON DELETE CASCADE
+  );
 
-CREATE TABLE Kopalnia_Zlota (
-	id int NOT NULL,
-	Nazwa varchar(255) NOT NULL,
-	Zamek_id int,
-	CONSTRAINT kopalnia_zlota_pk PRIMARY KEY (id),
-	FOREIGN KEY (Zamek_id) REFERENCES Zamek(id) ON DELETE CASCADE
-);
+CREATE TABLE tartak
+  (
+     id       INT NOT NULL UNIQUE,
+     nazwa    VARCHAR(255) NOT NULL,
+     zamek_id INT,
+     CONSTRAINT tartak_pk PRIMARY KEY (id),
+     FOREIGN KEY (zamek_id) REFERENCES zamek(id) ON DELETE CASCADE
+  );
 
+CREATE TABLE potwory
+  (
+     id     INT NOT NULL UNIQUE,
+     zycie  INT NOT NULL,
+     atak   INT NOT NULL,
+     obrona INT NOT NULL,
+     CONSTRAINT potwory_pk PRIMARY KEY (id)
+  );
 
+CREATE TABLE krolestwo_potwory
+  (
+     krolestwo_id INT NOT NULL,
+     powtowry_id  INT NOT NULL,
+     PRIMARY KEY (krolestwo_id, powtowry_id),
+     FOREIGN KEY (krolestwo_id) REFERENCES krolestwo(id) ON UPDATE CASCADE,
+     FOREIGN KEY (powtowry_id) REFERENCES potwory(id) ON UPDATE CASCADE
+  );
 
-CREATE TABLE Tartak (
-	id int NOT NULL,
-	Nazwa varchar(255) NOT NULL,
-	Zamek_id int,
-	CONSTRAINT Tartak_pk PRIMARY KEY (id),
-	FOREIGN KEY (Zamek_id) REFERENCES Zamek(id) ON DELETE CASCADE
-);
+CREATE TABLE rycerz
+  (
+     id           INT NOT NULL UNIQUE,
+     nazwa        VARCHAR(255) NOT NULL,
+     atak         INT NOT NULL,
+     obrona       INT NOT NULL,
+     zycie        INT NOT NULL,
+     krolestwo_id INT NOT NULL,
+     zamek_id     INT NOT NULL,
+     CONSTRAINT rycerz_pk PRIMARY KEY (id),
+     FOREIGN KEY (zamek_id) REFERENCES zamek(id) ON DELETE CASCADE,
+     FOREIGN KEY (krolestwo_id) REFERENCES krolestwo(id) ON DELETE CASCADE
+  );
 
-
-
-CREATE TABLE Potwory (
-	id int NOT NULL,
-	Zycie int NOT NULL,
-	Atak int NOT NULL,
-	Obrona int NOT NULL,
-	CONSTRAINT Potwory_pk PRIMARY KEY (id)
-);
-
-
-CREATE TABLE Krolestwo_Potwory (
-	Krolestwo_id int NOT NULL,
-	Powtowry_id int NOT NULL,
-	PRIMARY KEY (Krolestwo_id, Powtowry_id),
-	FOREIGN KEY (Krolestwo_id) REFERENCES Krolestwo(id) ON UPDATE CASCADE,
-  FOREIGN KEY (Powtowry_id) REFERENCES Potwory(id) ON UPDATE CASCADE
-);
-
-
-CREATE TABLE Rycerze (
-	id int NOT NULL,
-	Nazwa varchar(255) NOT NULL,
-	Atak int NOT NULL,
-	Obrona int NOT NULL,
-	Zycie int NOT NULL,
-	Krolestwo_id int NOT NULL,
-	Zamek_id int NOT NULL,
-	CONSTRAINT Rycerze_pk PRIMARY KEY (id),
-	FOREIGN KEY (Zamek_id) REFERENCES Zamek(id) ON DELETE CASCADE,
-	FOREIGN KEY (Krolestwo_id) REFERENCES Krolestwo(id) ON DELETE CASCADE
-);
-
-
-
-CREATE TABLE Umiejetnosc_Specjalna (
-	id int NOT NULL,
-	Dodatkowe_Obrazenia int NOT NULL,
-	Czas_Odnowienia int NOT NULL,
-	CONSTRAINT Umiejetność_Specjalna_pk PRIMARY KEY (id),
-	CONSTRAINT fk_rycerz_id FOREIGN KEY (id) REFERENCES Rycerze (id)
-);
+CREATE TABLE umiejetnosc_specjalna
+  (
+     id                  INT NOT NULL UNIQUE,
+     dodatkowe_obrazenia INT NOT NULL,
+     czas_odnowienia     INT NOT NULL,
+     CONSTRAINT umiejetnosc_specjalna_pk PRIMARY KEY (id),
+     CONSTRAINT fk_rycerz_id FOREIGN KEY (id) REFERENCES rycerz (id)
+  );

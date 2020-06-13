@@ -1,9 +1,17 @@
-DROP TABLE if exists "Krolestwo" cascade;
-DROP TABLE if exists "Zamek" cascade;
-DROP TABLE "Kopalnia_Zlota";
-DROP TABLE "Tartak";
-DROP TABLE if exists "Potwory" cascade;
-DROP TABLE "Krolestwo_Potwory";
-DROP TABLE if exists "Zamek" cascade;
-DROP TABLE if exists "Rycerze" cascade;
-DROP TABLE "Umiejetnosc_Specjalna";
+DROP TABLE IF EXISTS krolestwo CASCADE;
+
+DROP TABLE IF EXISTS zamek CASCADE;
+
+DROP TABLE kopalnia_zlota;
+
+DROP TABLE tartak;
+
+DROP TABLE IF EXISTS potwory CASCADE;
+
+DROP TABLE krolestwo_potwory;
+
+DROP TABLE IF EXISTS zamek CASCADE;
+
+DROP TABLE IF EXISTS rycerz CASCADE;
+
+DROP TABLE umiejetnosc_specjalna;
