@@ -57,7 +57,7 @@ FROM   zamek
 WHERE  id IN (SELECT kopalnia_zlota.zamek_id
               FROM   kopalnia_zlota);
 
--- lista zamkow wraz z iloscia kopaln
+-- lista zamkow wraz z iloscia kopalń
 SELECT zamek.nazwa     AS zamek,
        krolestwo.nazwa AS krolestwo,
        Count(*)        AS "ile kopalń"
